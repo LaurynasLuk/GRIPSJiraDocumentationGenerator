@@ -76,7 +76,7 @@ namespace GRIPSJiraDocumentationGenerator
                         description = RemoveImagesFromText(description);
 
                         string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "documentation-template.docx");
-                        string newFileName = $"TCD {issueKey} {summary}.docx";
+                        string newFileName = $"TCD DEV-{issueKey} {summary}.docx";
                         string newFilePath = Path.Combine(_filePath, newFileName);
                         var document = DocX.Load(templatePath);
                         var replacements = new Dictionary<string, string>
