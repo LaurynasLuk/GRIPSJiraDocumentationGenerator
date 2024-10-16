@@ -71,6 +71,7 @@ namespace GRIPSJiraDocumentationGenerator
                         issueKey = issueKey.Replace("DEV-", "");
 
                         string summary = issueJson["fields"]["summary"].ToString();
+                        summary = AdjustFileName(summary);
 
                         string description = issueJson["fields"]["description"]?.ToString() ?? "No description";
                         description = RemoveImagesFromText(description);
@@ -121,6 +122,15 @@ namespace GRIPSJiraDocumentationGenerator
             result = Regex.Replace(result, @"\s+", " ").Trim();
 
             return result;
+        }
+
+        private string AdjustFileName(string fileName)
+        {
+            string invalidChars = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+
+            string sanitizedFileName = Regex.Replace(fileName, "[" + Regex.Escape(invalidChars) + "]", "");
+
+            return sanitizedFileName;
         }
 
     }

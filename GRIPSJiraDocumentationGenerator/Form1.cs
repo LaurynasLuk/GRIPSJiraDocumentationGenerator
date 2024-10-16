@@ -21,6 +21,7 @@ namespace GRIPSJiraDocumentationGenerator
         {
             userNameTextBox.Text = Properties.Settings.Default.savedUserName;
             tokenTextBox.Text = Properties.Settings.Default.savedToken;
+            browseTextBox.Text = Properties.Settings.Default.savedPath;
         }
 
         private async void Generate_Click(object sender, EventArgs e)
